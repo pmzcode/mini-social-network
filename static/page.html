@@ -1,0 +1,233 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Вход</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/page.css" rel="stylesheet">
+    <link href="css/pagination.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/simplePagination.css"/>
+    <link href="css/toastr.css" rel="stylesheet"/>
+</head>
+<body>
+<nav role="navigation" class="navbar navbar-default navbr">
+    <div class="navbar-header">
+        <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a href="/page.html" class="navbar-brand">PMZ</a>
+    </div>
+
+    <div id="navbarCollapse" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li><a href="/friends.html">Друзья</a></li>
+            <li><a href="/dialogs.html">Быстрые сообщения</a></li>
+            <li><a href="/news.html">Новости </a></li>
+            <li><a href="/peoples.html">Люди</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/index.html">Выйти</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <div id="nameuser"></div>
+            <img src="img\2.jpg" class="img-thumbnail img-responsive avatar">
+            <button type="button" id="unreadmsg" class="btn btn-primary btn-block">Сообщения <span class="unread" id="unread"></span></button>
+            <div id="info"></div>
+        </div>
+        <div class="col-lg-9">
+
+
+            <br/><br/><br/>
+            <div class="row col-lg-9">
+                <input type="text" id="walltext" class="form-control" placeholder="Напишите пост...">
+            </div>
+            <div id="wall" class="row col-lg-9">
+            </div>
+
+        </div>
+
+        <div id="light-pagination" class="">
+        </div>
+
+    </div>
+</div>
+
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Заголовок модального окна -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Новые сообщения</h4>
+            </div>
+            <!-- Основное содержимое модального окна -->
+            <div  id="usersmsg" class="modal-body">
+
+            </div>
+            <!-- Футер модального окна -->
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-3.2.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/toastr.js"></script>
+<script type="text/javascript" src="js/jquery.simplePagination.js"></script>
+<script>
+    $(function () {
+
+        $.get('/api/info', function (data) {
+            $("#nameuser").append("<h3>" + data.name + " " + data.surname + "</h3>");
+            $("#info").append("<span class='label label-primary'>" + data.location + "</span>");
+            $("#info").append("<span class='label label-info'>" + data.birtdate + "</span>")
+
+        });
+
+        $.get('/api/posts', function (data) {
+
+            data.rows.forEach(function (post) {
+                var url = '/api/users/' + post.sender + '/info';
+                $.get(url, function (data2) {
+                    $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
+                            + post.message + "<button class='delbtn' id='" + post.id + "' onclick='deletePost(" + post.id + ")'>" +
+                            "<img class='delimg' src='img\\close.ico'></button></div>");
+                });
+            });
+
+            $("#light-pagination").pagination({
+                items: data.count,
+                itemsOnPage: 10,
+                cssStyle: 'light-theme',
+                onPageClick: function (page_number) {
+                    $.get('/api/posts', {page: page_number}, function (data) {
+                        $("#wall").empty();
+                        data.rows.forEach(function (post) {
+                            var url = '/api/users/' + post.sender + '/info';
+                            $.get(url, function (data2) {
+                                $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
+                                        + post.message + "<button class='delbtn' id='" + post.id + "' onclick='deletePost(" + post.id + ")'>" +
+                                        "<img class='delimg' src='img\\close.ico'></button></div>");
+                            });
+                        });
+                    });
+                }
+            });
+        });
+
+        $.get("/api/messages?type=unread", function(data){
+            $("#unread").append(data.count==0?" ":data.count);
+        });
+
+
+    });
+
+    function deletePost(id) {
+        $.ajax({
+            url: '/api/posts?post_id=' + id,
+            type: 'DELETE',
+            data: {_method: "delete"},
+            success: function (result) {
+                toastr.success("Пост удален!")
+            },
+            error: function () {
+                refreshWall();
+                toastr.success("Пост удален!")
+            }
+
+        });
+
+    }
+
+    function refreshWall(){
+        $("#wall").empty();
+        $.get('/api/posts', function (data) {
+            $("#light-pagination").pagination({ items: data.count,
+                itemsOnPage: 10,
+                cssStyle: 'light-theme',
+                onPageClick: function (page_number) {
+                    $.get('/api/posts', {page: page_number}, function (data) {
+                        $("#wall").empty();
+                        data.rows.forEach(function (post) {
+                            var url = '/api/users/' + post.sender + '/info';
+                            $.get(url, function (data2) {
+                                $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
+                                        + post.message + "<button class='delbtn' id='" + post.id + "' onclick='deletePost(" + post.id + ")'>" +
+                                        "<img class='delimg' src='img\\close.ico'></button></div>");
+                            });
+                        });
+                    });
+                }})
+            data.rows.forEach(function (post) {
+                var url = '/api/users/' + post.sender + '/info';
+                $.get(url, function (data2) {
+                    $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
+                            + post.message + "<button class='delbtn' id='" + post.id + "' onclick='deletePost(" + post.id + ")'>" +
+                            "<img class='delimg' src='img\\close.ico'></button></div>");
+                });
+            });
+        });
+    }
+
+    $("#walltext").keyup(function (event) {
+        if (event.keyCode == 13) {
+            $.post('/api/posts', {message: $("#walltext").val()}, function (data) {
+                $("#walltext").val("");
+                toastr.success("Пост добавлен!")
+                refreshWall();
+            });
+        }
+    });
+
+    $("#find").click(function () {
+        var search = $("#name").val();
+        var arr = search.split(" ");
+        $.get('/api/info', {name: arr[0], surname: arr[1]}, function (data) {
+            window.location = "user.html?id=" + data.id;
+        });
+    });
+
+    $("#logout").click(function () {
+        $.ajax({
+            url: '/api/sessions',
+            type: 'DELETE'
+        });
+    })
+
+
+
+    $("#unreadmsg").click(function() {
+        $("#myModal").modal('show');
+        $.get("/api/messages?type=unread", function(data){
+            data.rows.forEach(function(message){
+                var url = "/api/users/" + message.sender_id + "/info";
+                var url2 = "/api/messages/" + message.sender_id + "?type=unread";
+                $.get(url, function(info){
+                    $.get(url2, function(messages){
+                        var id = "#" + message.sender_id;
+                        if(!($(id).length))
+                        $("#usersmsg").append("<div class='post unuser col-lg-12' id='"+message.sender_id+"'>"+
+                                info.name+" "+info.surname+" <span class='unread'>"+ messages.count +"</span></div>")
+                    });
+                })
+            })
+        });
+    });
+
+
+    $('.modal-body').on('click','.unuser',function(){
+        var friendid = $(this).attr("id");
+        window.location = "history.html?id="+friendid;
+    });
+
+</script>
+</body>
+</html>

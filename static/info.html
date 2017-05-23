@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>О себе</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Информация</h1>
+        <div class="form-group">
+            <label>Имя</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Введите имя">
+        </div>
+        <div class="form-group">
+            <label>Фамилия</label>
+            <input type="text" class="form-control" id="surname" name="surname" placeholder="Введите фамилию">
+
+        </div>
+        <div class="form-group">
+            <label>День рождения</label>
+            <input type="text" class="form-control" id="birthdate" name="birthdate" placeholder="Введите день рождения">
+        </div>
+        <div class="form-group">
+            <label>Местоположение</label>
+            <input type="text" class="form-control" id="location" name="location" placeholder="Введите город">
+        </div>
+        <button type="button" id="info" onclick="location.href='index.html'" class="btn btn-primary">Готово</button>
+    </div>
+<script src="js/jquery-3.2.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    $("#info").click(function () {
+        var name = $("#name").val();
+        var surname = $("#surname").val();
+        var birthdate = $("#birthdate").val();
+        var location = $("#location").val();
+        $.post("/api/info",{name:name,surname:surname,birtdate:birthdate,location:location},function (data){
+            location.href="info.html"
+        });
+    });
+
+</script>
+</body>
+</html>

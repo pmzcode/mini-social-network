@@ -1,0 +1,13 @@
+.container{
+    width:20%;
+    align:center;
+    margin-top: 10%;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: white;
+}
+
+body{
+    background: url('../img/129.jpg');
+}

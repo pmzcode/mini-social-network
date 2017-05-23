@@ -1,0 +1,11 @@
+{
+  "db": {
+    "driver": "mysql",
+    "username": "root",
+    "password": "root",
+    "host": "localhost",
+    "dbname": "kurs",
+    "port": "3306"
+  },
+  "secret_key": "egorpomz"
+}

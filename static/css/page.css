@@ -1,0 +1,55 @@
+.container{
+}
+.post{
+    background-color: #1b6d85;
+    color: white;
+    border-radius: 8px;
+    padding: 5px 5px 5px 5px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.delimg{
+    width: 20px;
+    height: 20px;
+}
+
+.delbtn{
+    background: #000;
+    border: none;
+    padding: 0;
+    background: url('../img/close.ico') no-repeat 0 0;
+    float: right;
+
+}
+
+body{
+    background: url('../img/129.jpg') repeat 0 0;
+}
+
+#nameuser{
+    background:#1b6d85;
+    color: white;
+    padding-left: 20%;
+    border-radius: 8px;
+}
+
+.pagination{
+    float: left;
+}
+
+
+.unread{
+    color:red;
+    float: right;
+    background-color: white;
+    border-radius: 2px;
+    padding: 2px;
+}
+
+
+.datemsg{
+    float:right;
+}
+
+

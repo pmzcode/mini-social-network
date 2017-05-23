@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Вход</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <link href="css/toastr.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="container">
+        <h1>Вход</h1>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" id="email" name="username" placeholder="Введите email">
+            <p class="help-block">Email используется в качестве логина</p>
+        </div>
+        <div class="form-group">
+            <label>Пароль</label>
+            <input type="password" class="form-control" id="pass" name="password" placeholder="Пароль">
+
+        </div>
+        <button type="button" name="enterpage" id="enterpage" class="btn btn-primary">Войти</button>
+        <button type="button" onclick="location.href='registration.html'" class="btn btn-primary">Регистрация</button>
+    </div>
+<script src="js/jquery-3.2.0.min.js"></script>
+    <script src="js/toastr.js"></script>
+<script src="js/bootstrap.min.js"></script>
+    <script>
+        $("#enterpage").click(function () {
+            var username = $("#email").val();
+            var password = $("#pass").val();
+            $.post("/api/sessions",{username:username,password:password})
+                    .done(function (data){
+                        location.href = "page.html";
+                    })
+                    .fail(function (err) {
+                        toastr.error("Неверный логин/пароль!");
+                    });
+        });
+    </script>
+
+</body>
+</html>

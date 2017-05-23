@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Регистрация</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <link href="css/toastr.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="container">
+        <h1>Регистрация</h1>
+        <div class="form-group">
+            <label>Введите ваш Email</label>
+            <input type="email" class="form-control" id="email" name="username" placeholder="Введите email">
+            <p class="help-block">Email используется в качестве логина</p>
+        </div>
+        <div class="form-group">
+            <label>Введите пароль</label>
+            <input type="password" class="form-control" id="pass" name="password" placeholder="Введите пароль"><br/>
+            <input type="password" class="form-control" id="pass2" name="password" placeholder="Повторите пароль">
+        </div>
+        <button type="button" id="registration" class="btn btn-primary">Зарегестрироваться</button>
+    </div>
+<script src="js/jquery-3.2.0.min.js"></script>
+    <script src="js/toastr.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    $("#registration").click(function () {
+        var email = $("#email").val();
+
+        if($("#pass").val() == $("#pass2").val()) {
+            $.post("/api/sessions/registrations", {username: email, password:$("#pass").val() }, function (data) {
+                $.post("/api/sessions/", {username: email, password: $("#pass").val()}, function (data2) {
+                    location.href = "info.html"
+                });
+            });
+        }
+        else
+            toastr.error("Пароли должны совпадать!")
+    });
+</script>
+</body>
+</html>
