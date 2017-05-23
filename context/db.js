@@ -1,12 +1,15 @@
 "use strict"
 
 module.exports = (Sequelize, config) => {
+
+    const dbConfig = process.env.PMZ_PROJECT === 'production' ? config.prod : config.db;
+
     const options = {
-        host: config.db.host,
-        dialect: config.db.driver
+        host: dbConfig.host,
+        dialect: dbConfig.driver
     };
 
-    const sequelize = new Sequelize(config.db.dbname, config.db.username, config.db.password, options);
+    const sequelize = new Sequelize(dbConfig.dbname, dbConfig.username, dbConfig.password, options);
     const User = require('../models/user')(Sequelize, sequelize);
     const Info = require('../models/info')(Sequelize, sequelize);
     const Friend = require('../models/friends')(Sequelize, sequelize);
