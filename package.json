@@ -1,7 +1,6 @@
 {
   "name": "kursach",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "dependencies": {
     "bcrypt": "^1.0.2",
@@ -21,5 +20,14 @@
     "start": "node server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pmzcode/mini-social-network.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pmzcode/mini-social-network/issues"
+  },
+  "homepage": "https://github.com/pmzcode/mini-social-network#readme",
+  "description": ""
 }
