@@ -12,7 +12,7 @@
     "name": "d15as4sqc0a2lv",
     "user": "ntbpdzsxylyeap",
     "password": "c59389e980ec713076502fd98f90e3dfc03307d1561ba29ca24be14a0775de66",
-    "dialect": "postgres"
+    "driver": "postgres"
 
   },
   "secret_key": "egorpomz"
