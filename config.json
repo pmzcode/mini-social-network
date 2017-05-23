@@ -9,8 +9,8 @@
   },
   "prod": {
     "host": "ec2-54-163-246-154.compute-1.amazonaws.com",
-    "name": "d15as4sqc0a2lv",
-    "user": "ntbpdzsxylyeap",
+    "dbname": "d15as4sqc0a2lv",
+    "username": "ntbpdzsxylyeap",
     "password": "c59389e980ec713076502fd98f90e3dfc03307d1561ba29ca24be14a0775de66",
     "driver": "postgres"
 
