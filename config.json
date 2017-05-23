@@ -8,10 +8,10 @@
     "port": "3306"
   },
   "prod": {
-    "host": "ec2-54-163-234-20.compute-1.amazonaws.com",
-    "name": "d8e579to8e8vdm",
-    "user": "bjjgkgcrynsuud",
-    "password": "015c59290377d8fb8efcee4f1798b4514839b4f874756e099ad994b4dd32b8d9",
+    "host": "ec2-54-163-246-154.compute-1.amazonaws.com",
+    "name": "d15as4sqc0a2lv",
+    "user": "ntbpdzsxylyeap",
+    "password": "c59389e980ec713076502fd98f90e3dfc03307d1561ba29ca24be14a0775de66",
     "dialect": "postgres"
 
   },
