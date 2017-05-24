@@ -28,6 +28,7 @@
             <li><a href="/dialogs.html">Быстрые сообщения</a></li>
             <li><a href="/news.html">Новости </a></li>
             <li><a href="/peoples.html">Люди</a></li>
+            <li><a href="/settings.html">Настройки</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="/index.html">Выйти</a></li>
@@ -41,15 +42,18 @@
             <img src="img\2.jpg" class="img-thumbnail img-responsive avatar">
             <button type="button" id="unreadmsg" class="btn btn-primary btn-block">Сообщения <span class="unread" id="unread"></span></button>
             <div id="info"></div>
+            <div class="col-lg-12" id="information">
+
+            </div>
         </div>
-        <div class="col-lg-9">
 
 
+        <div class="col-lg-8" id="centerblock">
             <br/><br/><br/>
-            <div class="row col-lg-9">
+            <div class="row col-lg-12">
                 <input type="text" id="walltext" class="form-control" placeholder="Напишите пост...">
             </div>
-            <div id="wall" class="row col-lg-9">
+            <div id="wall" class="row col-lg-12">
             </div>
 
         </div>
@@ -87,8 +91,16 @@
 
         $.get('/api/info', function (data) {
             $("#nameuser").append("<h3>" + data.name + " " + data.surname + "</h3>");
-            $("#info").append("<span class='label label-primary'>" + data.location + "</span>");
-            $("#info").append("<span class='label label-info'>" + data.birtdate + "</span>")
+            if(data.location != null && data.location != "")
+                $("#information").append("<p class='text-center h4' >Местоположение:</p><p class='text-center h4' >" + data.location+"</p>" );
+            if(data.birtdate != null && data.birtdate != "")
+                $("#information").append("<p class='text-center h4' >День рождения:</p><p class='text-center h4' >" + data.birtdate+"</p>" );
+            if(data.phone != null && data.phone != "")
+                $("#information").append("<p class='text-center h4' >Телефон:</p><p class='text-center h4' >" + data.phone+"</p>" );
+            if(data.about != null && data.about != "")
+                $("#information").append("<p class='text-center h4' >О себе:</p><p class='text-center h4' >" + data.about+"</p>" );
+            if(data.status != null && data.status != "")
+                $("#centerblock").prepend("<div class='col-lg-11' id='status'><blockquoteq class='text-center h4' >" + data.status+"</blockquoteq></div>");
 
         });
 

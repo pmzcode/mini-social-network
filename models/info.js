@@ -24,9 +24,12 @@ module.exports = function(Sequelize, sequelize) {
         phone: {
             type: Sequelize.STRING
         },
-        interests: {
+        about: {
             type: Sequelize.STRING
         },
+        status:{
+            type: Sequelize.STRING
+        }
     }, {
         timestamps: false
     });

@@ -35,7 +35,8 @@ module.exports = (infoRepository, userRepository) => {
                 if (data.user) {
                     infoRepository.build({
                         name: data.body.name, surname: data.body.surname,
-                        birtdate: data.body.birtdate, location: data.body.location
+                        birtdate: data.body.birtdate, location: data.body.location,
+                        phone: data.body.phone,about:data.body.about,status:data.body.status
                     })
                         .save().then(res => {
                         userRepository.update({InfoId: res.id}, {where: {id: data.user.id}})
@@ -131,7 +132,8 @@ module.exports = (infoRepository, userRepository) => {
                     .then((user)=>{
                         infoRepository.update({
                             name: data.body.name, surname: data.body.surname,
-                            birtdate: data.body.birtdate, location: data.body.location
+                            birtdate: data.body.birtdate, location: data.body.location,
+                            phone: data.body.phone,about:data.body.about,status:data.body.status
                         },{where:{id:user.InfoId}})
                             .then(res => {
                             resolve({success:true});

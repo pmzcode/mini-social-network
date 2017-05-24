@@ -52,4 +52,22 @@ body{
     float:right;
 }
 
+#status{
+    border: 2px solid white;
+    background-color: #1b6d85;
+    color: white;
+    margin-top: 20px;
+}
 
+
+#information{
+    border: 2px solid white;
+    background-color: #1b6d85;
+    color: white;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.centerblock{
+    margin-top:50px;
+}

@@ -22,8 +22,16 @@ $(function () {
 
     $.get(requrl1, function (data) {
         $("#nameuser").append("<h3>" + data.name + " " + data.surname + "</h3>");
-        $("#info").append("<span class='label label-primary'>" + data.location + "</span>");
-        $("#info").append("<span class='label label-info'>" + data.birtdate + "</span>")
+        if(data.location != null && data.location != "")
+            $("#information").append("<p class='text-center h4' >Местоположение:</p><p class='text-center h4' >" + data.location+"</p>" );
+        if(data.birtdate != null && data.birtdate != "")
+            $("#information").append("<p class='text-center h4' >День рождения:</p><p class='text-center h4' >" + data.birtdate+"</p>" );
+        if(data.phone != null && data.phone != "")
+            $("#information").append("<p class='text-center h4' >Телефон:</p><p class='text-center h4' >" + data.phone+"</p>" );
+        if(data.about != null && data.about != "")
+            $("#information").append("<p class='text-center h4' >О себе:</p><p class='text-center h4' >" + data.about+"</p>" );
+        if(data.status != null && data.status != "")
+            $("#centerblock").prepend("<div class='col-lg-12' id='status'><blockquoteq class='text-center h4' >" + data.status+"</blockquoteq></div>");
 
     });
 

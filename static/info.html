@@ -26,6 +26,18 @@
             <label>Местоположение</label>
             <input type="text" class="form-control" id="location" name="location" placeholder="Введите город">
         </div>
+        <div class="form-group">
+            <label>Телефон</label>
+            <input type="text" class="form-control" id="phone" name="phone" placeholder="Введите телефон">
+        </div>
+        <div class="form-group">
+            <label>О себе</label>
+            <input type="text" class="form-control" id="about" name="about" placeholder="Введите описание">
+        </div>
+        <div class="form-group">
+            <label>Статус</label>
+            <input type="text" class="form-control" id="status" name="status" placeholder="Введите описание">
+        </div>
         <button type="button" id="info" onclick="location.href='index.html'" class="btn btn-primary">Готово</button>
     </div>
 <script src="js/jquery-3.2.0.min.js"></script>
@@ -36,7 +48,11 @@
         var surname = $("#surname").val();
         var birthdate = $("#birthdate").val();
         var location = $("#location").val();
-        $.post("/api/info",{name:name,surname:surname,birtdate:birthdate,location:location},function (data){
+        var phone = $("#phone").val();
+        var about = $("#about").val();
+        var status = $("#status").val();
+        $.post("/api/info",{name:name,surname:surname,birtdate:birthdate,location:location,phone: phone,
+        about:about,status:status},function (data){
             location.href="info.html"
         });
     });

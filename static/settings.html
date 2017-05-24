@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>О себе</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <link href="css/toastr.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <h1>Информация</h1>
+    <div class="form-group">
+        <label>Имя</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Введите имя">
+    </div>
+    <div class="form-group">
+        <label>Фамилия</label>
+        <input type="text" class="form-control" id="surname" name="surname" placeholder="Введите фамилию">
+
+    </div>
+    <div class="form-group">
+        <label>День рождения</label>
+        <input type="text" class="form-control" id="birthdate" name="birthdate" placeholder="Введите день рождения">
+    </div>
+    <div class="form-group">
+        <label>Местоположение</label>
+        <input type="text" class="form-control" id="location" name="location" placeholder="Введите город">
+    </div>
+    <div class="form-group">
+        <label>Телефон</label>
+        <input type="text" class="form-control" id="phone" name="phone" placeholder="Введите телефон">
+    </div>
+    <div class="form-group">
+        <label>О себе</label>
+        <input type="text" class="form-control" id="about" name="about" placeholder="Введите описание">
+    </div>
+    <div class="form-group">
+        <label>Статус</label>
+        <input type="text" class="form-control" id="status" name="status" placeholder="Введите описание">
+    </div>
+    <button type="button" id="info"  class="btn btn-primary">Готово</button>
+</div>
+<script src="js/jquery-3.2.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/toastr.js"></script>
+<script>
+    $(function(){
+        $.get('/api/info', function (data) {
+            if(data.name != null)
+                $("#name").val(data.name);
+            if(data.surname != null)
+                $("#surname").val(data.surname);
+            if(data.location != null)
+                $("#location").val(data.location);
+            if(data.birtdate != null)
+                $("#birthdate").val(data.birtdate);
+            if(data.phone != null)
+                $("#phone").val(data.phone);
+            if(data.about != null)
+                $("#about").val(data.about);
+            if(data.status != null)
+                $("#status").val(data.status);
+        });
+
+    })
+
+
+
+
+    $("#info").click(function () {
+        var name = $("#name").val();
+        var surname = $("#surname").val();
+        var birthdate = $("#birthdate").val();
+        var location = $("#location").val();
+        var phone = $("#phone").val();
+        var about = $("#about").val();
+        var status = $("#status").val();
+        $.ajax({
+            url: '/api/info',
+            type: 'PUT',
+            data: {name:name,surname:surname,birtdate:birthdate,location:location,phone: phone,
+                about:about,status:status},
+            success: function (result) {
+                toastr.success("Информация изменена!")
+            },
+            error: function () {
+                toastr.success("Информация изменена!")
+            }
+
+        });
+    });
+
+
+
+</script>
+</body>
+</html>

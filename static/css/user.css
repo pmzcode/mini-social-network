@@ -8,3 +8,35 @@
     margin-top: 5px;
     margin-bottom: 10px;
 }
+
+body{
+    background: url('../img/129.jpg') repeat 0 0;
+}
+
+#information{
+    border: 2px solid white;
+    background-color: #1b6d85;
+    color: white;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.centerblock{
+    margin-top:50px;
+}
+
+#status{
+    border: 2px solid white;
+    background-color: #1b6d85;
+    color: white;
+    margin-top: 20px;
+
+}
+
+
+#nameuser{
+    background:#1b6d85;
+    color: white;
+    padding-left: 20%;
+    border-radius: 8px;
+}
