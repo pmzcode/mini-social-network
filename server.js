@@ -33,3 +33,5 @@ app.use(require('express').static('static'));
 sio(io);
 
 dbcontext.sequelize.sync().then(()=>http.listen(process.env.PORT || 3000,()=>{console.log("Running app...");})) ;
+
+module.exports = app;

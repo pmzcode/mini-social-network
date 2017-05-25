@@ -48,9 +48,9 @@
         </div>
 
 
-        <div class="col-lg-8" id="centerblock">
+        <div class="col-lg-8" >
             <br/><br/><br/>
-            <div class="row col-lg-12">
+            <div class="row col-lg-12" id="centerblock">
                 <input type="text" id="walltext" class="form-control" placeholder="Напишите пост...">
             </div>
             <div id="wall" class="row col-lg-12">
@@ -100,7 +100,7 @@
             if(data.about != null && data.about != "")
                 $("#information").append("<p class='text-center h4' >О себе:</p><p class='text-center h4' >" + data.about+"</p>" );
             if(data.status != null && data.status != "")
-                $("#centerblock").prepend("<div class='col-lg-11' id='status'><blockquoteq class='text-center h4' >" + data.status+"</blockquoteq></div>");
+                $("#centerblock").prepend("<div class='col-lg-12' id='status'><blockquoteq class='text-center h4' >" + data.status+"</blockquoteq></div>");
 
         });
 
@@ -148,6 +148,7 @@
             type: 'DELETE',
             data: {_method: "delete"},
             success: function (result) {
+                refreshWall();
                 toastr.success("Пост удален!")
             },
             error: function () {

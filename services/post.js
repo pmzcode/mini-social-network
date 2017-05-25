@@ -89,10 +89,9 @@ module.exports = (postRepository) => {
                             receiver: user
 
                     }})
-                    .save()
                     .then((info) => {
-                        if(info) resolve("test");
-                        else reject({status: "error", message: 'Failer to delete post'});
+                        resolve({success:true});
+
                     })
                     .catch(reject);
             });
