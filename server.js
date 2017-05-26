@@ -28,6 +28,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use("/api",apiController);
+app.use('/images', require('express').static('images'));
 app.use(require('express').static('static'));
 
 sio(io);

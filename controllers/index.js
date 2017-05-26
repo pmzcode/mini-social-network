@@ -3,7 +3,27 @@
 const express = require("express");
 const Sequelize = require('sequelize');
 const config = require("./../config.json");
-const auth = require('./../utils/auth')
+const auth = require('./../utils/auth');
+const multer  = require('multer');
+const path = require('path');
+
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => cb(null, 'images/'),
+
+    filename: (req, file, cb) => {
+        req.body.path = `${req.body.name}${path.extname(file.originalname)}`;
+        cb(null, req.body.path);
+    }
+});
+
+const upload = multer({ storage });
+const uploadMiddleware = upload.fields([
+    { name: 'image' },
+    { name: 'name' }
+]);
+
+
 
 
 module.exports=(sessionService,infoService,friendService,messageService,postService,dialogService, config)=> {
@@ -26,7 +46,12 @@ module.exports=(sessionService,infoService,friendService,messageService,postServ
     router.use('/dialogs',dialogController);
 
     router.use('/users/:id',userController);
-
+    router.post('/images', uploadMiddleware, (req, res) => {
+        res.json({
+            name: req.body.name,
+            path: `/images/${req.body.path}`
+        });
+    });
     return router;
 }
 

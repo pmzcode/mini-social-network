@@ -40,7 +40,7 @@
     <div class="row">
         <div class="col-lg-3">
             <div id="nameuser"></div>
-            <img src="img\2.jpg" class="img-thumbnail img-responsive avatar">
+            <img src="images\undefined.png" class="img-thumbnail img-responsive avatar">
             <button type="button" id="unreadmsg" class="btn btn-primary btn-block">Сообщения <span class="unread" id="unread"></span></button>
             <div id="info"></div>
             <div class="col-lg-12" id="information">
@@ -106,15 +106,16 @@
         });
 
         $.get('/api/posts', function (data) {
-
+            jQuery.ajaxSetup({async:false});
             data.rows.forEach(function (post) {
                 var url = '/api/users/' + post.sender + '/info';
-                $.get(url, function (data2) {
+                $.get(url,{async:false}, function (data2) {
                     $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
                             + post.message + "<button class='delbtn' id='" + post.id + "' onclick='deletePost(" + post.id + ")'>" +
                             "<img class='delimg' src='img\\close.ico'></button></div>");
                 });
-            });
+                jQuery.ajaxSetup({async:true});
+            })
 
             $("#light-pagination").pagination({
                 items: data.count,
@@ -168,6 +169,7 @@
                 itemsOnPage: 10,
                 cssStyle: 'light-theme',
                 onPageClick: function (page_number) {
+                    jQuery.ajaxSetup({async:false});
                     $.get('/api/posts', {page: page_number}, function (data) {
                         $("#wall").empty();
                         data.rows.forEach(function (post) {
@@ -179,6 +181,7 @@
                             });
                         });
                     });
+                    jQuery.ajaxSetup({async:true});
                 }})
             data.rows.forEach(function (post) {
                 var url = '/api/users/' + post.sender + '/info';
