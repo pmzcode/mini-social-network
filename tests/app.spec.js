@@ -9,7 +9,6 @@ const cookies = ['token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlc
 
 describe('info api tests', () => {
 
-
     it('GET api/info/', (done) => {
         return request
             .get('/api/info')
@@ -39,9 +38,7 @@ describe('info api tests', () => {
                 done()
             })
             .catch((err) => {
-
                 throw err;
-
             })
 
     });
@@ -66,8 +63,6 @@ describe('info api tests', () => {
                 throw err;
             })
     });
-
-
 
 });
 

@@ -1,15 +1,9 @@
 "use strict"
-
 var Promise = require("bluebird");
-
 module.exports = (dialogsRepository) => {
-
     function dialogsService(dialogsRepository) {
         var self = this;
-
         self.getRoom = getRoom;
-
-
         function getRoom(data) {
             return new Promise((resolve, reject) => {
                 console.log(data.user.id);
@@ -36,13 +30,9 @@ module.exports = (dialogsRepository) => {
                     }).then((rooms) => {
                         if(rooms) resolve(rooms);
                         else reject(rooms);
-
                 });
             });
         }
-
     }
-
     return new dialogsService(dialogsRepository);
-
 }
