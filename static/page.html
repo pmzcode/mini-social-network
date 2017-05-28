@@ -295,7 +295,7 @@
                             url:url2,
                             async: false,
                             type: "GET",
-                            success: function (data2) {
+                            success: function (messages) {
                                 var id = "#" + message.sender_id;
                                     if(!($(id).length))
                                     $("#usersmsg").append("<div class='post unuser col-lg-12' id='"+message.sender_id+"'>"+
