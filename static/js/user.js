@@ -35,6 +35,8 @@ $(function () {
 
     });
 
+
+    //PROBLEM!!!
     $.get(requrl2, function (data) {
         data.rows.forEach(function (post) {
             var url = '/api/users/' + post.sender + '/info';
@@ -86,7 +88,7 @@ $(function () {
 
 });
 
-
+//PROBLEM!!!
 function refreshWall(req) {
     $("#wall").empty();
     $.get(req, function (data) {

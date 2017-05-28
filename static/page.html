@@ -105,18 +105,32 @@
 
         });
 
+
+
+        //PROBLEM!!!!
         $.get('/api/posts', function (data) {
-            jQuery.ajaxSetup({async:false});
             data.rows.forEach(function (post) {
-                var url = '/api/users/' + post.sender + '/info';
-                $.get(url,{async:false}, function (data2) {
-                    $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
-                            + post.message + "<button class='delbtn' id='" + post.id + "' onclick='deletePost(" + post.id + ")'>" +
-                            "<img class='delimg' src='img\\close.ico'></button></div>");
+                //var url = '/api/users/' + post.sender + '/info';
+                //$.get(url, function (data2) {
+                //    $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
+                //            + post.message + "<button class='delbtn' id='" + post.id + "' onclick='deletePost(" + post.id + ")'>" +
+                //            "<img class='delimg' src='img\\close.ico'></button></div>");
+                //});
+                $.ajax({
+                    url: '/api/users/'+ post.sender + '/info',
+                    async: false,
+                    type: "GET",
+                    success: function (data2) {
+                        $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
+                                + post.message + "<button class='delbtn' id='" + post.id + "' onclick='deletePost(" + post.id + ")'>" +
+                                "<img class='delimg' src='img\\close.ico'></button></div>");
+
+                    }
                 });
-                jQuery.ajaxSetup({async:true});
+
             })
 
+            //PROBLEM!!!!
             $("#light-pagination").pagination({
                 items: data.count,
                 itemsOnPage: 10,
@@ -162,6 +176,7 @@
 
     }
 
+    //PROBLEM!!!!
     function refreshWall(){
         $("#wall").empty();
         $.get('/api/posts', function (data) {
@@ -169,7 +184,6 @@
                 itemsOnPage: 10,
                 cssStyle: 'light-theme',
                 onPageClick: function (page_number) {
-                    jQuery.ajaxSetup({async:false});
                     $.get('/api/posts', {page: page_number}, function (data) {
                         $("#wall").empty();
                         data.rows.forEach(function (post) {
@@ -181,7 +195,6 @@
                             });
                         });
                     });
-                    jQuery.ajaxSetup({async:true});
                 }})
             data.rows.forEach(function (post) {
                 var url = '/api/users/' + post.sender + '/info';
@@ -220,7 +233,7 @@
     })
 
 
-
+    //PROBLEM!!!!
     $("#unreadmsg").click(function() {
         $("#myModal").modal('show');
         $.get("/api/messages?type=unread", function(data){
