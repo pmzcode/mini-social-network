@@ -187,11 +187,22 @@
                     $.get('/api/posts', {page: page_number}, function (data) {
                         $("#wall").empty();
                         data.rows.forEach(function (post) {
-                            var url = '/api/users/' + post.sender + '/info';
-                            $.get(url, function (data2) {
-                                $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
-                                        + post.message + "<button class='delbtn' id='" + post.id + "' onclick='deletePost(" + post.id + ")'>" +
-                                        "<img class='delimg' src='img\\close.ico'></button></div>");
+                            //var url = '/api/users/' + post.sender + '/info';
+                            //$.get(url, function (data2) {
+                            //    $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
+                            //            + post.message + "<button class='delbtn' id='" + post.id + "' onclick='deletePost(" + post.id + ")'>" +
+                            //            "<img class='delimg' src='img\\close.ico'></button></div>");
+                            //});
+                            $.ajax({
+                                url: '/api/users/'+ post.sender + '/info',
+                                async: false,
+                                type: "GET",
+                                success: function (data2) {
+                                    $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
+                                               + post.message + "<button class='delbtn' id='" + post.id + "' onclick='deletePost(" + post.id + ")'>" +
+                                                "<img class='delimg' src='img\\close.ico'></button></div>");
+
+                                }
                             });
                         });
                     });
