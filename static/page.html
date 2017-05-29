@@ -38,7 +38,7 @@
 </nav>
 <div class="container">
     <div class="row">
-        <div class="col-lg-3">
+        <div id="prcont" class="col-lg-3">
             <div id="nameuser"></div>
             <img id="avatar" src="img\2.jpg" class="img-thumbnail img-responsive avatar">
             <button type="button" id="unreadmsg" class="btn btn-primary btn-block">Сообщения <span class="unread" id="unread"></span></button>
@@ -46,6 +46,7 @@
             <div class="col-lg-12" id="information">
 
             </div>
+
         </div>
 
 
@@ -108,6 +109,11 @@
 
         $.get('/api/images',function(data){
             $("#avatar").attr('src',data.path);
+        });
+
+        $.get('/api/gifts',function(data){
+            for(var i=0;i<data.length,i<10;i++)
+                $("#prcont").append("<img class='present' src='"+data[i].path+"'>");
         });
 
         //PROBLEM!!!!

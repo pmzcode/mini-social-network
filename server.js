@@ -18,9 +18,10 @@ const friendService = require('./services/friend')(dbcontext.friend,dbcontext.us
 const postService = require('./services/post')(dbcontext.post);
 const dialogService = require('./services/dialog')(dbcontext.dialog);
 const imageService = require('./services/image')(dbcontext.info,dbcontext.user);
+const giftService = require('./services/gift')(dbcontext.gift);
 
 const apiController = require('./controllers/index')(userService,infoService,friendService,messageService,
-    postService, dialogService,imageService,config);
+    postService, dialogService,imageService,giftService,config);
 
 app.use(cookieParser());
 app.use(bodyParser.json());

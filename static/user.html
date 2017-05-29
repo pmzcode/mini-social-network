@@ -41,6 +41,7 @@
             <img src="img\2.jpg"  id="avatar" class="img-thumbnail img-responsive avatar">
             <button  id="addfriend" name="addfriend" class="btn btn-primary btn-block">Добавить в друзья</button>
             <button id="addmessage" class="btn btn-primary btn-block" >Отправить сообщение</button>
+
             <div id="information"></div>
         </div>
         <div class="col-lg-8" >
@@ -70,8 +71,19 @@
             </div>
             <!-- Футер модального окна -->
             <div class="modal-footer">
+                <div class="btn-group">
+                    <select id="presents" class="form-control">
+                        <option value="1">Дед мороз</option>
+                        <option value="2">Медведи</option>
+                        <option value="3">Дарт Вейдер</option>
+                        <option value="4">Машина</option>
+                        <option value="5">Олень</option>
+                    </select>
+                </div>
+                <button class="btn btn-default" id="addpresent">Подарок</button>
                 <button type="button" id="historymsg" class="btn btn-default">История</button>
                 <button type="button" id="sendmsg" class="btn btn-default" data-dismiss="modal">Отправить</button>
+
             </div>
         </div>
     </div>

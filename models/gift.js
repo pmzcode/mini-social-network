@@ -9,8 +9,12 @@ module.exports = function(Sequelize, sequelize) {
         },
         type: {
             type: Sequelize.STRING,
-            unique: true,
-            allowNull: false
+        },
+        sender: {
+            type: Sequelize.INTEGER,
+        },
+        receiver: {
+            type: Sequelize.INTEGER,
         },
         path: {
             type: Sequelize.STRING,

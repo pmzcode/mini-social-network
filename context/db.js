@@ -16,6 +16,7 @@ module.exports = (Sequelize, config) => {
     const Message = require('../models/message')(Sequelize, sequelize);
     const Post = require('../models/post')(Sequelize, sequelize);
     const Dialog = require('../models/dialog')(Sequelize, sequelize);
+    const Gift = require('../models/gift')(Sequelize, sequelize);
 
     User.belongsTo(Info);
 
@@ -27,6 +28,7 @@ module.exports = (Sequelize, config) => {
         message:Message,
         post: Post,
         dialog: Dialog,
+        gift: Gift,
         sequelize: sequelize
     };
 };

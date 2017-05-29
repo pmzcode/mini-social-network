@@ -8,7 +8,7 @@ const auth = require('./../utils/auth');
 
 
 
-module.exports=(sessionService,infoService,friendService,messageService,postService,dialogService,imageService, config)=> {
+module.exports=(sessionService,infoService,friendService,messageService,postService,dialogService,imageService,giftService, config)=> {
 
     const router = express.Router({mergeParams: true});
     const sessionsController = require('./session')(sessionService, promiseHandler);
@@ -19,6 +19,7 @@ module.exports=(sessionService,infoService,friendService,messageService,postServ
     const postController = require('./post')(postService,promiseHandler);
     const dialogController = require('./dialog')(dialogService,promiseHandler);
     const imageController = require('./image')(imageService,promiseHandler);
+    const giftController = require('./gift')(giftService,promiseHandler);
 
     router.use('/sessions', sessionsController);
     router.use(auth);
@@ -27,9 +28,11 @@ module.exports=(sessionService,infoService,friendService,messageService,postServ
     router.use('/messages',messageController);
     router.use('/posts',postController);
     router.use('/dialogs',dialogController);
+    router.use('/images', imageController);
+    router.use('/gifts', giftController);
 
     router.use('/users/:id',userController);
-    router.use('/images', imageController);
+
 
     return router;
 }

@@ -71,3 +71,9 @@ body{
 .centerblock{
     margin-top:50px;
 }
+
+.present{
+    height: 50px;
+    width: 50px;
+    border: 2px solid #1b6d85;
+}

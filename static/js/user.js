@@ -80,7 +80,7 @@ $(function () {
     });
 
     $("#sendmsg").click(function () {
-        toastr.success("Пост Добавлен!");
+        toastr.success("Сообщение отправлено!");
         $.post(requrl3, {text: $("#message").val()});
 
     });
@@ -143,6 +143,10 @@ $("#addfriend").click(function () {
 });
 
 
-$("#addmessage").click(function () {
-    $("#mymodal").show();
+$("#addpresent").click(function () {
+
+    var url = "/api/gifts/"+id;
+    $.post(url,{type:$("#presents option:selected").val()}, function (data2) {
+        toastr.success("Подарок отправлен!!");
+    });
 });
