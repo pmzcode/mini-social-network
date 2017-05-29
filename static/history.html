@@ -74,11 +74,16 @@
 
             data.rows.forEach( function (message) {
                 var url = '/api/users/'+message.sender_id+'/info';
-                $.get(url, function (info) {
-                    var style = message.sender_id == params.id?'post':'msg';
-                    $("#messages").append("<div class='"+style+" col-lg-12' id='"+info.id+"'><b>"+
-                            info.name+" "+info.surname +"</b>: "+message.text+" <span class='datemsg'>"+message.date+"</span></div>");
-                });
+                $.ajax({
+                    url: url,
+                    async: false,
+                    type: "GET",
+                    success: function (info) {
+                        var style = message.sender_id == params.id?'post':'msg';
+                        $("#messages").append("<div class='"+style+" col-lg-12' id='"+info.id+"'><b>"+
+                                info.name+" "+info.surname +"</b>: "+message.text+" <span class='datemsg'>"+message.date+"</span></div>");
+                    }
+                })
             });
             $("#light-pagination").pagination({
                 items: data.count,
@@ -89,11 +94,16 @@
                     $.get(requrl,{page:page_number}, function(data) {
                         data.rows.forEach(function (message) {
                             var url = '/api/users/' + message.sender_id + '/info';
-                            $.get(url, function (info) {
-                                var style = message.sender_id == recid ? 'post' : 'msg';
-                                $("#messages").append("<div class='" + style + " col-lg-12' id='" + info.id + "'><b>" +
-                                        info.name + " " + info.surname + "</b>: " + message.text + " <span class='datemsg'>" + message.date + "</span></div>");
-                            });
+                            $.ajax({
+                                url: url,
+                                async: false,
+                                type: "GET",
+                                success: function (info) {
+                                    var style = message.sender_id == recid ? 'post' : 'msg';
+                                    $("#messages").append("<div class='" + style + " col-lg-12' id='" + info.id + "'><b>" +
+                                            info.name + " " + info.surname + "</b>: " + message.text + " <span class='datemsg'>" + message.date + "</span></div>");
+                                }
+                            })
                         });
                     });
                 }
@@ -116,11 +126,17 @@
         $.get(sendid, function(data) {
             data.rows.forEach( function (message) {
                 var url = '/api/users/'+message.sender_id+'/info';
-                $.get(url, function (info) {
-                    var style = message.sender_id == recid?'post':'msg';
-                    $("#messages").append("<div class='"+style+" col-lg-12' id='"+info.id+"'><b>"+
-                            info.name+" "+info.surname +"</b>: "+message.text+" <span class='datemsg'>"+message.date+"</span></div>");
-                });
+                $.ajax({
+                    url: url,
+                    async: false,
+                    type: "GET",
+                    success: function (info) {
+                        var style = message.sender_id == recid?'post':'msg';
+                        $("#messages").append("<div class='"+style+" col-lg-12' id='"+info.id+"'><b>"+
+                                info.name+" "+info.surname +"</b>: "+message.text+" <span class='datemsg'>"+message.date+"</span></div>");
+                    }
+                })
+
             });
             $("#light-pagination").pagination({
                 items: data.count,
@@ -131,11 +147,16 @@
                     $.get(sendid,{page:page_number}, function(data) {
                         data.rows.forEach(function (message) {
                             var url = '/api/users/' + message.sender_id + '/info';
-                            $.get(url, function (info) {
-                                var style = message.sender_id == recid ? 'post' : 'msg';
-                                $("#messages").append("<div class='" + style + " col-lg-12' id='" + info.id + "'><b>" +
-                                        info.name + " " + info.surname + "</b>: " + message.text + " <span class='datemsg'>" + message.date + "</span></div>");
-                            });
+                            $.ajax({
+                                url: url,
+                                async: false,
+                                type: "GET",
+                                success: function (info) {
+                                    var style = message.sender_id == recid ? 'post' : 'msg';
+                                    $("#messages").append("<div class='" + style + " col-lg-12' id='" + info.id + "'><b>" +
+                                            info.name + " " + info.surname + "</b>: " + message.text + " <span class='datemsg'>" + message.date + "</span></div>");
+                                }
+                            })
                         });
                     });
                 }

@@ -37,17 +37,24 @@ $(function () {
     });
 
     $.get(requrl4,function(data){
+        if(data.path)
         $("#avatar").attr('src',data.path);
     });
 
 
-    //PROBLEM!!!
+
     $.get(requrl2, function (data) {
         data.rows.forEach(function (post) {
             var url = '/api/users/' + post.sender + '/info';
-            $.get(url, function (data2) {
-                $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> " + post.message + "</div>");
-            });
+
+            $.ajax({
+                url: url,
+                async: false,
+                type: "GET",
+                success: function (data2) {
+                    $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> " + post.message + "</div>");
+                }
+            })
         });
         $("#light-pagination").pagination({
             items: data.count,
@@ -58,10 +65,15 @@ $(function () {
                 $.get(requrl2, {page: page_number}, function (data) {
                     data.rows.forEach(function (post) {
                         var url = '/api/users/' + post.sender + '/info';
-                        $.get(url, function (data2) {
-                            $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
-                                + post.message + "</div>");
-                        });
+                        $.ajax({
+                            url: url,
+                            async: false,
+                            type: "GET",
+                            success: function (data2) {
+                                $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
+                                    + post.message + "</div>");
+                            }
+                        })
                     });
                 });
             }
@@ -93,7 +105,7 @@ $(function () {
 
 });
 
-//PROBLEM!!!
+
 function refreshWall(req) {
     $("#wall").empty();
     $.get(req, function (data) {
@@ -106,20 +118,31 @@ function refreshWall(req) {
                 $.get(requrl2, {page: page_number}, function (data) {
                     data.rows.forEach(function (post) {
                         var url = '/api/users/' + post.sender + '/info';
-                        $.get(url, function (data2) {
-                            $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
-                                + post.message + "</div>");
-                        });
+                        $.ajax({
+                            url: url,
+                            async: false,
+                            type: "GET",
+                            success: function (data2) {
+                                $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
+                                    + post.message + "</div>");
+                            }
+                        })
+
                     });
                 });
             }
         });
         data.rows.forEach(function (post) {
             var url = '/api/users/' + post.sender + '/info';
-            $.get(url, function (data2) {
-                $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
-                    + post.message + "</div>");
-            });
+            $.ajax({
+                url: url,
+                async: false,
+                type: "GET",
+                success: function (data2) {
+                    $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
+                        + post.message + "</div>");
+                }
+            })
         });
 
     });

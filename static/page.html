@@ -108,6 +108,7 @@
 
 
         $.get('/api/images',function(data){
+            if(data)
             $("#avatar").attr('src',data.path);
         });
 
@@ -116,15 +117,9 @@
                 $("#prcont").append("<img class='present' src='"+data[i].path+"'>");
         });
 
-        //PROBLEM!!!!
+
         $.get('/api/posts', function (data) {
             data.rows.forEach(function (post) {
-                //var url = '/api/users/' + post.sender + '/info';
-                //$.get(url, function (data2) {
-                //    $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
-                //            + post.message + "<button class='delbtn' id='" + post.id + "' onclick='deletePost(" + post.id + ")'>" +
-                //            "<img class='delimg' src='img\\close.ico'></button></div>");
-                //});
                 $.ajax({
                     url: '/api/users/'+ post.sender + '/info',
                     async: false,
@@ -139,7 +134,6 @@
 
             })
 
-            //PROBLEM!!!!
             $("#light-pagination").pagination({
                 items: data.count,
                 itemsOnPage: 10,
@@ -149,11 +143,6 @@
                         $("#wall").empty();
                         data.rows.forEach(function (post) {
                         var url = '/api/users/' + post.sender + '/info';
-                            //$.get(url, function (data2) {
-                            //    $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
-                            //            + post.message + "<button class='delbtn' id='" + post.id + "' onclick='deletePost(" + post.id + ")'>" +
-                            //            "<img class='delimg' src='img\\close.ico'></button></div>");
-                            //});
                             $.ajax({
                                 url: '/api/users/' + post.sender + '/info',
                                 async: false,
@@ -195,7 +184,7 @@
 
     }
 
-    //PROBLEM!!!!
+
     function refreshWall(){
         $("#wall").empty();
         $.get('/api/posts', function (data) {
@@ -206,12 +195,6 @@
                     $.get('/api/posts', {page: page_number}, function (data) {
                         $("#wall").empty();
                         data.rows.forEach(function (post) {
-                            //var url = '/api/users/' + post.sender + '/info';
-                            //$.get(url, function (data2) {
-                            //    $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
-                            //            + post.message + "<button class='delbtn' id='" + post.id + "' onclick='deletePost(" + post.id + ")'>" +
-                            //            "<img class='delimg' src='img\\close.ico'></button></div>");
-                            //});
                             $.ajax({
                                 url: '/api/users/'+ post.sender + '/info',
                                 async: false,
@@ -228,11 +211,6 @@
                 }})
             data.rows.forEach(function (post) {
                 var url = '/api/users/' + post.sender + '/info';
-                //$.get(url, function (data2) {
-                //    $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
-                //            + post.message + "<button class='delbtn' id='" + post.id + "' onclick='deletePost(" + post.id + ")'>" +
-                //            "<img class='delimg' src='img\\close.ico'></button></div>");
-                //});
                 $.ajax({
                     url: '/api/users/' + post.sender + '/info',
                     async: false,
@@ -274,32 +252,17 @@
     })
 
 
-    //PROBLEM!!!!
     $("#unreadmsg").click(function() {
-        $("#myModal").modal('show');
+
         $.get("/api/messages?type=unread", function(data){
             data.rows.forEach(function(message){
                 var url = "/api/users/" + message.sender_id + "/info";
                 var url2 = "/api/messages/" + message.sender_id + "?type=unread";
-                //$.get(url, function(info){
-                //    $.get(url2, function(messages){
-                //        var id = "#" + message.sender_id;
-                //        if(!($(id).length))
-                //        $("#usersmsg").append("<div class='post unuser col-lg-12' id='"+message.sender_id+"'>"+
-                //                info.name+" "+info.surname+" <span class='unread'>"+ messages.count +"</span></div>")
-                //    });
-                //})
                 $.ajax({
                     url: url,
                     async: false,
                     type: "GET",
                     success: function(info){
-                            //$.get(url2, function(messages){
-                            //    var id = "#" + message.sender_id;
-                            //    if(!($(id).length))
-                            //    $("#usersmsg").append("<div class='post unuser col-lg-12' id='"+message.sender_id+"'>"+
-                            //            info.name+" "+info.surname+" <span class='unread'>"+ messages.count +"</span></div>")
-                            //});
                         $.ajax({
                             url:url2,
                             async: false,
@@ -314,6 +277,7 @@
 
                 }});
             })
+            $("#myModal").modal('show');
         });
     });
 
