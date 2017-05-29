@@ -29,6 +29,9 @@ module.exports = function(Sequelize, sequelize) {
         },
         status:{
             type: Sequelize.STRING
+        },
+        avatar:{
+            type: Sequelize.STRING
         }
     }, {
         timestamps: false

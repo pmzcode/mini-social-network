@@ -4,29 +4,11 @@ const express = require("express");
 const Sequelize = require('sequelize');
 const config = require("./../config.json");
 const auth = require('./../utils/auth');
-const multer  = require('multer');
-const path = require('path');
-
-
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => cb(null, 'images/'),
-
-    filename: (req, file, cb) => {
-        req.body.path = `${req.body.name}${path.extname(file.originalname)}`;
-        cb(null, req.body.path);
-    }
-});
-
-const upload = multer({ storage });
-const uploadMiddleware = upload.fields([
-    { name: 'image' },
-    { name: 'name' }
-]);
 
 
 
 
-module.exports=(sessionService,infoService,friendService,messageService,postService,dialogService, config)=> {
+module.exports=(sessionService,infoService,friendService,messageService,postService,dialogService,imageService, config)=> {
 
     const router = express.Router({mergeParams: true});
     const sessionsController = require('./session')(sessionService, promiseHandler);
@@ -35,7 +17,8 @@ module.exports=(sessionService,infoService,friendService,messageService,postServ
     const friendController = require('./friend')(friendService,promiseHandler);
     const messageController = require('./message')(messageService,promiseHandler);
     const postController = require('./post')(postService,promiseHandler);
-    const dialogController = require('./dialog')(dialogService,promiseHandler)
+    const dialogController = require('./dialog')(dialogService,promiseHandler);
+    const imageController = require('./image')(imageService,promiseHandler);
 
     router.use('/sessions', sessionsController);
     router.use(auth);
@@ -46,12 +29,8 @@ module.exports=(sessionService,infoService,friendService,messageService,postServ
     router.use('/dialogs',dialogController);
 
     router.use('/users/:id',userController);
-    router.post('/images', uploadMiddleware, (req, res) => {
-        res.json({
-            name: req.body.name,
-            path: `/images/${req.body.path}`
-        });
-    });
+    router.use('/images', imageController);
+
     return router;
 }
 

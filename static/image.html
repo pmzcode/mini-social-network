@@ -6,10 +6,10 @@
 </head>
 <body>
 
-<input id="name" type="еуче">
+<input id="name" type="text">
 <input id="image" type="file">
 <input id="send" type="button" value="Add">
-
+<script src="js/jquery-3.2.0.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <script>
@@ -20,7 +20,7 @@
     send.addEventListener('click', () => {
         const fd = new FormData();
 
-        fd.append('name', name.value);
+        fd.append('name', $("#name").val());
         fd.append('image', image.files[0]);
 
         axios.post('/api/images', fd, {
