@@ -39,9 +39,16 @@
         <label>Статус</label>
         <input type="text" class="form-control" id="status" name="status" placeholder="Введите описание">
     </div>
-    <button type="button" id="info"  class="btn btn-primary">Готово</button>
+    <button type="button" id="info"  class="btn btn-primary">Готово</button><br/>
+    <div class="form-group">
+        <br/>
+        <label>Аватар</label>
+        <input class="form-control" id="image" type="file">
+        <input class="form-control" id="send" type="button" value="Add">
+    </div>
 </div>
 <script src="js/jquery-3.2.0.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/toastr.js"></script>
 <script>
@@ -65,7 +72,22 @@
 
     })
 
+    const name = document.getElementById('name');
+    const image = document.getElementById('image');
+    const send = document.getElementById('send');
 
+    send.addEventListener('click', () => {
+        const fd = new FormData();
+
+        fd.append('name', $("#name").val()+$("#surname").val());
+        fd.append('image', image.files[0]);
+
+        axios.post('/api/images', fd, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }).then((res) => alert('Success! ' + JSON.stringify(res.data)));
+    });
 
 
     $("#info").click(function () {

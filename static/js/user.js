@@ -17,6 +17,7 @@ $(function () {
     var requrl1 = '/api/users/' + params.id + '/info';
     var requrl2 = '/api/users/' + params.id + '/posts';
     var requrl3 = '/api/messages/' + params.id;
+    var requrl4 = '/api/users/'+params.id+'/images'
     requrlpost = requrl2;
     addfriend = '/api/friends/' + params.id;
 
@@ -33,6 +34,10 @@ $(function () {
         if(data.status != null && data.status != "")
             $("#centerblock").prepend("<div class='col-lg-12' id='status'><blockquoteq class='text-center h4' >" + data.status+"</blockquoteq></div>");
 
+    });
+
+    $.get(requrl4,function(data){
+        $("#avatar").attr('src',data.path);
     });
 
 

@@ -12,7 +12,7 @@ module.exports=(sessionService,infoService,friendService,messageService,postServ
 
     const router = express.Router({mergeParams: true});
     const sessionsController = require('./session')(sessionService, promiseHandler);
-    const userController = require('./user')(infoService,friendService,messageService,postService,promiseHandler);
+    const userController = require('./user')(infoService,friendService,messageService,postService,imageService,promiseHandler);
     const infoController = require('./info')(infoService,promiseHandler);
     const friendController = require('./friend')(friendService,promiseHandler);
     const messageController = require('./message')(messageService,promiseHandler);
