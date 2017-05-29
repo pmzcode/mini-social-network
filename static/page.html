@@ -107,10 +107,16 @@
         });
 
 
-        $.get('/api/images',function(data){
-            if(data)
-            $("#avatar").attr('src',data.path);
-        });
+        $.ajax({
+            url: "/api/images",
+            type: "GET",
+            success: function (data) {
+                $("#avatar").attr('src',data.path);
+            },
+            error: function () {
+                $("#avatar").attr('src',"/img/2.jpg");
+            }
+        })
 
         $.get('/api/gifts',function(data){
             for(var i=0;i<data.length,i<10;i++)
@@ -125,7 +131,7 @@
                     async: false,
                     type: "GET",
                     success: function (data2) {
-                        $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
+                        $("#wall").append("<div class='post col-lg-12'><b>" + data2.name+" "+data2.surname + ":</b> "
                                 + post.message + "<button class='delbtn' id='" + post.id + "' onclick='deletePost(" + post.id + ")'>" +
                                 "<img class='delimg' src='img\\close.ico'></button></div>");
 
@@ -148,7 +154,7 @@
                                 async: false,
                                 type: "GET",
                                 success: function (data2) {
-                                    $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
+                                    $("#wall").append("<div class='post col-lg-12'><b>" + data2.name+" "+data2.surname + ":</b> "
                                             + post.message + "<button class='delbtn' id='" + post.id + "' onclick='deletePost(" + post.id + ")'>" +
                                             "<img class='delimg' src='img\\close.ico'></button></div>");
                                 }
@@ -200,7 +206,7 @@
                                 async: false,
                                 type: "GET",
                                 success: function (data2) {
-                                    $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
+                                    $("#wall").append("<div class='post col-lg-12'><b>" + data2.name+" "+data2.surname + ":</b> "
                                                + post.message + "<button class='delbtn' id='" + post.id + "' onclick='deletePost(" + post.id + ")'>" +
                                                 "<img class='delimg' src='img\\close.ico'></button></div>");
 
@@ -216,7 +222,7 @@
                     async: false,
                     type: "GET",
                     success: function (data2) {
-                        $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
+                        $("#wall").append("<div class='post col-lg-12'><b>" + data2.name+" "+data2.surname + ":</b> "
                                 + post.message + "<button class='delbtn' id='" + post.id + "' onclick='deletePost(" + post.id + ")'>" +
                                 "<img class='delimg' src='img\\close.ico'></button></div>");
                     }

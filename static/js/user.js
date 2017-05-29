@@ -36,10 +36,17 @@ $(function () {
 
     });
 
-    $.get(requrl4,function(data){
-        if(data.path)
-        $("#avatar").attr('src',data.path);
-    });
+
+    $.ajax({
+        url: requrl4,
+        type: "GET",
+        success: function (data) {
+            $("#avatar").attr('src',data.path);
+        },
+        error: function () {
+            $("#avatar").attr('src',"/img/2.jpg");
+        }
+    })
 
 
 
@@ -52,7 +59,7 @@ $(function () {
                 async: false,
                 type: "GET",
                 success: function (data2) {
-                    $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> " + post.message + "</div>");
+                    $("#wall").append("<div class='post col-lg-12'><b>" + data2.name+" "+data2.surname  + ":</b> " + post.message + "</div>");
                 }
             })
         });
@@ -70,7 +77,7 @@ $(function () {
                             async: false,
                             type: "GET",
                             success: function (data2) {
-                                $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
+                                $("#wall").append("<div class='post col-lg-12'><b>" +  data2.name+" "+data2.surname + ":</b> "
                                     + post.message + "</div>");
                             }
                         })
@@ -123,7 +130,7 @@ function refreshWall(req) {
                             async: false,
                             type: "GET",
                             success: function (data2) {
-                                $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
+                                $("#wall").append("<div class='post col-lg-12'><b>" + data2.name+" "+data2.surname + ":</b> "
                                     + post.message + "</div>");
                             }
                         })
@@ -139,7 +146,7 @@ function refreshWall(req) {
                 async: false,
                 type: "GET",
                 success: function (data2) {
-                    $("#wall").append("<div class='post col-lg-12'><b>" + data2.name + ":</b> "
+                    $("#wall").append("<div class='post col-lg-12'><b>" + data2.name+" "+data2.surname + ":</b> "
                         + post.message + "</div>");
                 }
             })
