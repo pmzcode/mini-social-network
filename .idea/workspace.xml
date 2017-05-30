@@ -59,8 +59,18 @@
       <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+            <state relative-caret-position="132">
+              <caret line="6" column="48" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="npm-debug.log" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/npm-debug.log">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-396">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -113,13 +123,6 @@
               <caret line="15" column="45" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2.jpg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/img/2.jpg">
-          <provider selected="true" editor-type-id="images">
-            <state />
           </provider>
         </entry>
       </file>
@@ -592,12 +595,12 @@
       <workItem from="1496034365376" duration="20000" />
       <workItem from="1496036143812" duration="3142000" />
       <workItem from="1496051554771" duration="25547000" />
-      <workItem from="1496121635730" duration="2105000" />
+      <workItem from="1496121635730" duration="2445000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="407265000" />
+    <option name="totallyTimeSpent" value="407605000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -648,13 +651,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/controllers/friend.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="76" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/services/dialog.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -954,10 +950,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/npm-debug.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-396">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+        <state relative-caret-position="132">
+          <caret line="6" column="48" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="48" />
           <folding />
         </state>
       </provider>
