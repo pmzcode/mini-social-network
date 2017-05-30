@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cfbcd9d0-072c-4e51-8baa-b25586e2f469" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/user.js" afterPath="$PROJECT_DIR$/static/js/user.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/page.html" afterPath="$PROJECT_DIR$/static/page.html" />
     </list>
     <ignored path="kursach.iws" />
@@ -30,8 +29,8 @@
       <file leaf-file-name="page.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3259">
-              <caret line="224" column="108" selection-start-line="224" selection-start-column="108" selection-end-line="224" selection-end-column="108" />
+            <state relative-caret-position="1631">
+              <caret line="229" column="55" selection-start-line="229" selection-start-column="55" selection-end-line="229" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -50,7 +49,7 @@
       <file leaf-file-name="user.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/user.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-26">
+            <state relative-caret-position="-23">
               <caret line="79" column="39" selection-start-line="79" selection-start-column="39" selection-end-line="79" selection-end-column="39" />
               <folding />
             </state>
@@ -81,7 +80,7 @@
       <file leaf-file-name="user.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-351">
+            <state relative-caret-position="2316">
               <caret line="148" column="104" selection-start-line="148" selection-start-column="104" selection-end-line="148" selection-end-column="104" />
               <folding />
             </state>
@@ -181,8 +180,8 @@
         <option value="$PROJECT_DIR$/static/css/page.css" />
         <option value="$PROJECT_DIR$/static/user.html" />
         <option value="$PROJECT_DIR$/static/history.html" />
-        <option value="$PROJECT_DIR$/static/page.html" />
         <option value="$PROJECT_DIR$/static/js/user.js" />
+        <option value="$PROJECT_DIR$/static/page.html" />
       </list>
     </option>
   </component>
@@ -569,12 +568,12 @@
       <workItem from="1496002989910" duration="4308000" />
       <workItem from="1496034365376" duration="20000" />
       <workItem from="1496036143812" duration="3142000" />
-      <workItem from="1496051554771" duration="23623000" />
+      <workItem from="1496051554771" duration="24752000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="403236000" />
+    <option name="totallyTimeSpent" value="404365000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -953,14 +952,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/user.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-26">
-          <caret line="79" column="39" selection-start-line="79" selection-start-column="39" selection-end-line="79" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/dialogs.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -984,15 +975,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3259">
-          <caret line="224" column="108" selection-start-line="224" selection-start-column="108" selection-end-line="224" selection-end-column="108" />
+        <state relative-caret-position="1631">
+          <caret line="229" column="55" selection-start-line="229" selection-start-column="55" selection-end-line="229" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/user.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-23">
+          <caret line="79" column="39" selection-start-line="79" selection-start-column="39" selection-end-line="79" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/user.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-351">
+        <state relative-caret-position="2316">
           <caret line="148" column="104" selection-start-line="148" selection-start-column="104" selection-end-line="148" selection-end-column="104" />
           <folding />
         </state>

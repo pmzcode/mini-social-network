@@ -133,6 +133,7 @@
                     success: function (data2) {
                         $("#wall").append("<div class='post col-lg-12'><b>" + data2.name+" "+data2.surname + ":</b> "
                                 + post.message + "<button class='delbtn' id='" + post.id + "' onclick='deletePost(" + post.id + ")'>" +
+                                "<b>"+post.date+"<b/>"+
                                 "<img class='delimg' src='img\\close.ico'></button></div>");
 
                     }
@@ -156,6 +157,7 @@
                                 success: function (data2) {
                                     $("#wall").append("<div class='post col-lg-12'><b>" + data2.name+" "+data2.surname + ":</b> "
                                             + post.message + "<button class='delbtn' id='" + post.id + "' onclick='deletePost(" + post.id + ")'>" +
+                                            "<b>"+post.date+"<b/>"+
                                             "<img class='delimg' src='img\\close.ico'></button></div>");
                                 }
                             });
@@ -208,7 +210,8 @@
                                 success: function (data2) {
                                     $("#wall").append("<div class='post col-lg-12'><b>" + data2.name+" "+data2.surname + ":</b> "
                                                + post.message + "<button class='delbtn' id='" + post.id + "' onclick='deletePost(" + post.id + ")'>" +
-                                                "<img class='delimg' src='img\\close.ico'></button></div>");
+                                            "<b>"+post.date+"<b/>"+
+                                            "<img class='delimg' src='img\\close.ico'></button></div>");
 
                                 }
                             });
@@ -224,6 +227,7 @@
                     success: function (data2) {
                         $("#wall").append("<div class='post col-lg-12'><b>" + data2.name+" "+data2.surname + ":</b> "
                                 + post.message + "<button class='delbtn' id='" + post.id + "' onclick='deletePost(" + post.id + ")'>" +
+                                "<b>"+post.date+"<b/>"+
                                 "<img class='delimg' src='img\\close.ico'></button></div>");
                     }
 
